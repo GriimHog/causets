@@ -1,0 +1,5 @@
+build/
+build-debug/
+*.o
+__pycache__/
+venvs/
