@@ -5,6 +5,7 @@
 #include <cmath>
 #include "sprinkle.hpp"
 #include "causet.hpp"
+#include "dimension.hpp"
 
 using namespace std ;
 
@@ -19,9 +20,9 @@ int main(){
 	//defining basic parameters
 	double V = 1.0 ;//volume of region
 	double rho; int itr ;//density of points and no of iterations
-	cout << "Enter density of points :" ;
+	cout << "Enter density of points : " ;
 	cin >> rho ;
-	cout << "Enter number of iterations :" ;
+	cout << "Enter number of iterations : " ;
 	cin >> itr ;
 
 	vector<double> ord_fracs(itr) ; //stores order fraction each iteration
@@ -42,6 +43,11 @@ int main(){
 	double sq_sum = accumulate(ord_fracs.begin(), ord_fracs.end(), 0.0, [mean](double accum, double x) {return accum + (x - mean) * (x - mean) ;}) ;//calc squared sum
 	double stdev = sqrt(sq_sum / itr) ;
 	
-	cout <<"Mean , Standard Deviation of "<< itr << " iterations is :" << mean << ", " << stdev << endl ;
+	// dimension estimate under tolerance 1e-6
+	double dmm = est_dim(mean, 0.5, 10, 1e-6) ;
+	double dmin = est_dim(mean - stdev, 0.5, 10, 1e-6) ;
+	double dmax = est_dim(mean + stdev, 0.5, 10, 1e-6) ;
+	double stddmm = abs(dmax - dmin) / 2.0 ;
+	cout <<" the ordering fraction of the ensemble of "<< itr << " iterations is : " << mean << " ± " << stdev << " and the estimate of dimension is : " << dmm << " ± " << stddmm << endl ;
 }
 
