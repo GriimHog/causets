@@ -36,8 +36,9 @@ git clone <your-repo-url>
 cd causets
 mkdir build && cd build
 chmod +x build.sh
-cmake .. && make -j$(nproc)
-./causets
+chmod +x run.sh
+source build.sh
+source run.sh
 ``` 
 
 No external dependencies beyond a C++17 compiler and CMake 3.16+.
