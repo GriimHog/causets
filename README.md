@@ -112,7 +112,7 @@ density ρ = 5000:
     r    = 0.500139 ± 0.500139
     d_MM = 1.99963  ± 0.0116437
 
-consistent with the input dimension of 2, expected much ? :|.
+consistent with the input dimension of 2, expected much ? :/.
 
 
 
@@ -129,7 +129,7 @@ src/main.cpp            - orchestration (magic happens here :) )
 
 ## Limitations
 
-
+Still Discovering :)
 
 ## References
 
