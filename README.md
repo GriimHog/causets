@@ -29,7 +29,7 @@ Planned:
 - (Stretch) Metropolis MCMC over 2d orders, looking for the continuum /
   non-continuum transition (Surya 2011, arXiv:1110.6244)
 
-## Build (Linux :))
+## Build (Linux :) )
 In terminal or such
 ```bash
 git clone <your-repo-url>
@@ -46,7 +46,7 @@ No external dependencies beyond a C++17 compiler and CMake 3.16+.
 Python (numpy, matplotlib) is used separately for plotting scripts under
 `scripts/` — see that directory for setup once added (means not present yet).
 
-## Build (Windows :()
+## Build (Windows :( )
 
 ### Option A: Visual Studio (MSVC)
 
@@ -75,7 +75,7 @@ Alternatively, if you have the CMake extension in VS Code, you can open
 the repo folder directly, select a kit (MSVC), and build via the
 CMake Tools sidebar without touching the command line.
 
-### Option B: WSL (Windows Subsystem for Linux :|)
+### Option B: WSL (Windows Subsystem for Linux :| )
 
 If you have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
 set up (Ubuntu is the default distribution), the Linux build
@@ -109,10 +109,10 @@ the ordering fraction r = 2R/(N(N-1)) via Meyer's relation
 inverted numerically by bisection. Over 20 independent sprinklings at
 density ρ = 5000:
 
-    r    = 0.500139 ± 0.500139
-    d_MM = 1.99963  ± 0.0116437
+    r = 0.500139 ± 0.500139
+    d_MM = 1.99963 ± 0.0116437
 
-consistent with the input dimension of 2, expected much ? :/.
+consistent with the input dimension of 2, expected much ? :/ .
 
 More to follow
 
