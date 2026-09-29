@@ -32,9 +32,9 @@ int main() {
 	vector<vector<uint64_t>> pst ;
 	build_bitset_causet(4, causal, ftr, pst) ;
 	
-//	check("N_0 (links)", 4, N_k[0]);
-//	check("N_1", 0, N_k[1]);
-//	check("N_2", 1, N_k[2]);
+	check("N_0 (links)", 4, N_k[0]);
+	check("N_1", 0, N_k[1]);
+	check("N_2", 1, N_k[2]);
 
 	cout << "future[0]: " << bitset<64>(ftr[0][0]) << endl;
 	cout << "future[1]: " << bitset<64>(ftr[1][0]) << endl;
