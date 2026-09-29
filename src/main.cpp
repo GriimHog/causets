@@ -3,6 +3,7 @@
 #include <random>
 #include <numeric>
 #include <cmath>
+#include <chrono>
 #include "sprinkle.hpp"
 #include "causet.hpp"
 #include "dimension.hpp"
@@ -26,6 +27,8 @@ int main(){
 	cin >> itr ;
 
 	vector<double> ord_fracs(itr) ; //stores order fraction each iteration
+	
+	auto start = chrono::high_resolution_clock::now();
 	for(int r = 0 ; r < itr ; r++){
 		vector<double> u, v ; //coords in null	
 		int N = sprinkle(rho, V, rng, u, v) ; //Draw rndm int from poisson dist sprinkle of points
@@ -35,19 +38,29 @@ int main(){
 		int R = build_causet(N, u, v, causal) ;
 		
 		ord_fracs[r] = ord_frac(N, R) ; //ordering fraction (for checking purposes)	
+		// order interval calculation
+		vector<long long> N_k(N-1, 0); // allocating N-1 spaces for each interval type maximum possible
+		ord_intrv(causal, N_k, N) ;
+		long long sum_check = accumulate(N_k.begin(), N_k.end(),0.0) ;
+		cout << "N :" << N << ", R :" << R << ", N_k[0](links) :" << N_k[0] << ", N_k Sum :" << sum_check << endl ;
 	}
-	//calc mean
-	double mean = accumulate(ord_fracs.begin(), ord_fracs.end(), 0.0) / itr ;
+	auto stop = chrono::high_resolution_clock::now();
+	chrono::duration<double> elapsed = stop - start; //CHECK LOOP RUNTIME
+	cout << "Causet build Runtime: " << elapsed.count() << " seconds" << endl;
 	
-	//calc std dev
-	double sq_sum = accumulate(ord_fracs.begin(), ord_fracs.end(), 0.0, [mean](double accum, double x) {return accum + (x - mean) * (x - mean) ;}) ;//calc squared sum
-	double stdev = sqrt(sq_sum / itr) ;
-	
-	// dimension estimate under tolerance 1e-6
-	double dmm = est_dim(mean, 0.5, 10, 1e-6) ;
-	double dmin = est_dim(mean - stdev, 0.5, 10, 1e-6) ;
-	double dmax = est_dim(mean + stdev, 0.5, 10, 1e-6) ;
-	double stddmm = abs(dmax - dmin) / 2.0 ;
-	cout <<" the ordering fraction of the ensemble of "<< itr << " iterations is : " << mean << " ± " << stdev << " and the estimate of dimension is : " << dmm << " ± " << stddmm << endl ;
-}
+//	//calc mean
+//	double mean = accumulate(ord_fracs.begin(), ord_fracs.end(), 0.0) / itr ;
+//	
+//	//calc std dev
+//	double sq_sum = accumulate(ord_fracs.begin(), ord_fracs.end(), 0.0, [mean](double accum, double x) {return accum + (x - mean) * (x - mean) ;}) ;//calc squared sum
+//	double stdev = sqrt(sq_sum / itr) ;
+//	
+//	// dimension estimate under tolerance 1e-6
+//	double dmm = est_dim(mean, 0.5, 10, 1e-6) ;
+//	double dmin = est_dim(mean - stdev, 0.5, 10, 1e-6) ;
+//	double dmax = est_dim(mean + stdev, 0.5, 10, 1e-6) ;
+//	double stddmm = abs(dmax - dmin) / 2.0 ;
+//	cout <<" the ordering fraction of the ensemble of "<< itr << " iterations is : " << mean << " ± " << stdev << " and the estimate of dimension is : " << dmm << " ± " << stddmm << endl ;
 
+	cout << "Causet build Runtime: " << elapsed.count() << " seconds" << endl;
+}

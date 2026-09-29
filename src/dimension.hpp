@@ -1,5 +1,6 @@
 #pragma once
 #include <cmath>
+using namespace std;
 
 // calculate r(d)
 double ord_frac_dimd(double d);

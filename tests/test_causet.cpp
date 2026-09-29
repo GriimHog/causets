@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <cstdint>
+#include <bitset>
 #include "../src/causet.hpp"
 using namespace std;
 
@@ -14,21 +16,33 @@ void check(const string& name, long long expected, long long actual) {
 }
 
 int main() {
-    // 4-element diamond: a=0, b=1, c=2, d=3
-    // a < b, a < c, a < d, b < d, c < d ; b,c unrelated
-    vector<vector<bool>> causal(4, vector<bool>(4, false));
-    causal[0][1] = true; // a < b
-    causal[0][2] = true; // a < c
-    causal[0][3] = true; // a < d
-    causal[1][3] = true; // b < d
-    causal[2][3] = true; // c < d
+	// 4-element diamond: a=0, b=1, c=2, d=3
+	// a < b, a < c, a < d, b < d, c < d ; b,c unrelated
+	vector<vector<bool>> causal(4, vector<bool>(4, false));
+	causal[0][1] = true; // a < b
+	causal[0][2] = true; // a < c
+	causal[0][3] = true; // a < d
+	causal[1][3] = true; // b < d
+	causal[2][3] = true; // c < d
 
-    vector<long long> N_k(3,0);
-    ord_intrv(causal, N_k, 4);
+	vector<long long> N_k(3,0);
+	ord_intrv(causal, N_k, 4);
+	
+	vector<vector<uint64_t>> ftr ;
+	vector<vector<uint64_t>> pst ;
+	build_bitset_causet(4, causal, ftr, pst) ;
+	
+//	check("N_0 (links)", 4, N_k[0]);
+//	check("N_1", 0, N_k[1]);
+//	check("N_2", 1, N_k[2]);
 
-    check("N_0 (links)", 4, N_k[0]);
-    check("N_1", 0, N_k[1]);
-    check("N_2", 1, N_k[2]);
-
-    return 0;
+	cout << "future[0]: " << bitset<64>(ftr[0][0]) << endl;
+	cout << "future[1]: " << bitset<64>(ftr[1][0]) << endl;
+	cout << "future[2]: " << bitset<64>(ftr[2][0]) << endl;
+	cout << "future[3]: " << bitset<64>(ftr[3][0]) << endl;
+	cout << "past[0]: " << bitset<64>(pst[0][0]) << endl;
+	cout << "past[1]: " << bitset<64>(pst[1][0]) << endl;
+	cout << "past[2]: " << bitset<64>(pst[2][0]) << endl;
+	cout << "past[3]: " << bitset<64>(pst[3][0]) << endl;
+	return 0;
 }
