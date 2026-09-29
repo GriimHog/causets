@@ -114,15 +114,37 @@ density ρ = 5000:
 
 consistent with the input dimension of 2, expected much ? :/ .
 
+### Order interval counting: naive vs. bitset+popcount
+
+Counting the order interval size |I(x,y)| for every related pair
+(needed for N_0, N_1, N_2, ... and ultimately the BDG action) is
+naively O(N^3). A bitset-packed representation of the causal matrix
+(64 elements per 64-bit word), combined with AND + __builtin_popcountll,
+reduces the constant factor by roughly 64x while leaving the underlying
+O(N^3) complexity unchanged.
+
+Verified exact agreement between the naive (`ord_intrv`) and fast
+(`ord_intrv_fast`) implementations across N ~ 1000-8000 (see
+tests/test_causet.cpp and the correctness check in main.cpp).
+
+| N    | Naive runtime | Bitset runtime | Speedup |
+|------|---------------|-----------------|---------|
+| 1002 | 0.185 s       | 0.014 s         | 13.2x   |
+| 1926 | 1.40 s        | 0.086 s         | 16.3x   |
+| 3919 | 17.6 s        | 0.673 s         | 26.2x   |
+| 7925 | 146.0 s       | 5.07 s          | 28.8x   |
+
+The speedup increases with N and approaches the theoretical ~64x
+ceiling as fixed per-call overhead becomes negligible relative to the
+O(N) per-pair inner loop being replaced by an O(N/64) one.
+
 More to follow
-
-
 
 ## Repository structure
 
 ```
 src/sprinkle.hpp/.cpp   - Poisson sprinkling into a causal diamond
-src/causet.hpp/.cpp     - causal matrix construction, ordering fraction
+src/causet.hpp/.cpp     - causal matrix construction, ordering fraction, order interval calculation
 src/dimension.hpp/.cpp  - Myrheim-Meyer dimension estimator (bisection)
 src/main.cpp            - orchestration (magic happens here :) )
 ```
