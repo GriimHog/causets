@@ -30,7 +30,7 @@ int main() {
 	
 	vector<vector<uint64_t>> ftr ;
 	vector<vector<uint64_t>> pst ;
-	build_bitset_causet(4, causal, ftr, pst) ;
+	build_bitset_causet(causal, ftr, pst, 4) ;
 	
 	check("N_0 (links)", 4, N_k[0]);
 	check("N_1", 0, N_k[1]);
