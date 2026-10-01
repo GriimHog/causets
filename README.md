@@ -109,10 +109,10 @@ the ordering fraction r = 2R/(N(N-1)) via Meyer's relation
 inverted numerically by bisection. Over 20 independent sprinklings at
 density ρ = 5000:
 
-    r = 0.500139 ± 0.500139
-    d_MM = 1.99963 ± 0.0116437
+    r = 0.498732 ± 0.00460209
+    d_MM = 2.00338 ± 0.0122988
 
-consistent with the input dimension of 2, expected much ? :/ .
+consistent with the dimension of 2, expected much ? :/ .
 
 ### Order interval counting: naive vs. bitset+popcount
 
