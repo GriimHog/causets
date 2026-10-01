@@ -153,7 +153,10 @@ src/main.cpp            - orchestration (magic happens here :) )
 
 ## Limitations
 
-Still Discovering :)
+- Only implements 2D yet.
+- As of yet has O(N^3) complexity (although reduced somewhat using bitset optimization).
+
+More to be added as I move forward.
 
 ## References
 
