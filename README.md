@@ -21,10 +21,10 @@ Implemented:
 - Causal matrix construction and ordering fraction
 - Myrheim-Meyer dimension estimator (Myrheim 1978; Meyer 1988), inverted
   numerically via bisection
+- Order intervals / link counting (bitset + popcount)
 
 Planned:
 - Sprinkling into 3d and 4d Minkowski diamonds
-- Order intervals / link counting (bitset + popcount)
 - Benincasa-Dowker-Glaser discrete action (Benincasa & Dowker 2010)
 - (Stretch) Metropolis MCMC over 2d orders, looking for the continuum /
   non-continuum transition (Surya 2011, arXiv:1110.6244)
