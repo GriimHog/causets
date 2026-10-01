@@ -147,9 +147,8 @@ src/sprinkle.hpp/.cpp   - Poisson sprinkling into a causal diamond
 src/causet.hpp/.cpp     - causal matrix construction, ordering fraction, order interval calculation
 src/dimension.hpp/.cpp  - Myrheim-Meyer dimension estimator (bisection)
 src/main.cpp            - orchestration (magic happens here :) )
+tests/test_causet.cpp	- unit tests: hand-built 4-element causet checks, naive vs. bitset interval-count cross-validation
 ```
-
-
 
 ## Limitations
 
