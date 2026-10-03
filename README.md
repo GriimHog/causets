@@ -156,7 +156,7 @@ Over 20 sprinklings per density, flat 2d Minkowski diamond:
 | 8000 | 7989   | -193.5 | 1347.3   |
 
 (<S>) is consistent with zero within statistical error at every N
-(standard error of the mean ~ stdev/sqrt(20)), as expected for flat
+(standard error of the mean stdev/sqrt(20)), as expected for flat
 spacetime. stdev(S) grows with N rather than shrinking -- consistent
 with Benincasa & Dowker's description of the unsmeared operator B, for
 which fluctuations persist (and are only tamed by the smeared operator
