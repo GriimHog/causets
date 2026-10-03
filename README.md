@@ -22,10 +22,10 @@ Implemented:
 - Myrheim-Meyer dimension estimator (Myrheim 1978; Meyer 1988), inverted
   numerically via bisection
 - Order intervals / link counting (bitset + popcount)
+- Benincasa-Dowker-Glaser discrete action (Benincasa & Dowker 2010)
 
 Planned:
 - Sprinkling into 3d and 4d Minkowski diamonds
-- Benincasa-Dowker-Glaser discrete action (Benincasa & Dowker 2010)
 - (Stretch) Metropolis MCMC over 2d orders, looking for the continuum /
   non-continuum transition (Surya 2011, arXiv:1110.6244)
 
@@ -155,7 +155,7 @@ Over 20 sprinklings per density, flat 2d Minkowski diamond:
 | 4000 | 3999   | -239.5 | 692.0    |
 | 8000 | 7989   | -193.5 | 1347.3   |
 
-(mean.S) is consistent with zero within statistical error at every N
+mean.S is consistent with zero within statistical error at every N
 
 (standard error of the mean ~ stdev/sqrt(20)), as expected for flat spacetime. stdev(S) grows with N rather than shrinking, consistent (standard error of the mean stdev/sqrt(20)), as expected for flat spacetime. stdev(S) grows with N rather than shrinking -- consistent with Benincasa & Dowker's description of the unsmeared operator B, for which fluctuations persist (and are only tamed by the smeared operator B_k, not implemented here).
 
