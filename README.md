@@ -138,6 +138,30 @@ The speedup increases with N and approaches the theoretical ~64x
 ceiling as fixed per-call overhead becomes negligible relative to the
 O(N) per-pair inner loop being replaced by an O(N/64) one.
 
+### 2d Benincasa-Dowker-Glaser action
+
+Implemented S = N - 2N_0 + 4N_1 - 2N_2 (Benincasa & Dowker,
+arXiv:1001.2725, eq. 13, converting their inclusive-interval N_i
+convention to this project's strictly-between-count convention).
+Verified against a hand-built 4-element causal diamond (expected
+S = -6; see tests/test_causet.cpp).
+
+Over 20 sprinklings per density, flat 2d Minkowski diamond:
+
+| rho  | mean N | <S>    | stdev(S) |
+|------|--------|--------|----------|
+| 1000 | 995    | 118.0  | 271.5    |
+| 2000 | 2033   | 141.5  | 438.4    |
+| 4000 | 3999   | -239.5 | 692.0    |
+| 8000 | 7989   | -193.5 | 1347.3   |
+
+<S> is consistent with zero within statistical error at every N
+(standard error of the mean ~ stdev/sqrt(20)), as expected for flat
+spacetime. stdev(S) grows with N rather than shrinking -- consistent
+with Benincasa & Dowker's description of the unsmeared operator B, for
+which fluctuations persist (and are only tamed by the smeared operator
+B_k, not implemented here).
+
 More to follow
 
 ## Repository structure
