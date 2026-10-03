@@ -148,7 +148,7 @@ S = -6; see tests/test_causet.cpp).
 
 Over 20 sprinklings per density, flat 2d Minkowski diamond:
 
-| rho  | mean N | <S>    | stdev(S) |
+| rho  | mean N | < S >  | stdev(S) |
 |------|--------|--------|----------|
 | 1000 | 995    | 118.0  | 271.5    |
 | 2000 | 2033   | 141.5  | 438.4    |
@@ -157,7 +157,7 @@ Over 20 sprinklings per density, flat 2d Minkowski diamond:
 
 (<S>) is consistent with zero within statistical error at every N
 (standard error of the mean ~ stdev/sqrt(20)), as expected for flat
-spacetime. stdev(S) grows with N rather than shrinking -- consistent
+spacetime. stdev(S) grows with N rather than shrinking, consistent
 with Benincasa & Dowker's description of the unsmeared operator B, for
 which fluctuations persist (and are only tamed by the smeared operator
 B_k, not implemented here).

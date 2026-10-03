@@ -43,7 +43,7 @@ int main() {
 //	check("N_1", 0, N_k[1]);
 //	check("N_2", 1, N_k[2]);
 	
-	check("BDG action S (2d, 4-element diamond)", -6, bdg_action_2d(N_k, 4));
+	check("BDG action S (2d, 4-element diamond)", -6, bdg_action_2d(N_k, 4)) ;
 	
 //	cout << "future[0]: " << bitset<64>(ftr[0][0]) << endl;
 //	cout << "future[1]: " << bitset<64>(ftr[1][0]) << endl;
