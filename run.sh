@@ -1,3 +1,3 @@
 cd build
-./causets
+perf stat ./causets
 cd ..
