@@ -155,7 +155,7 @@ Over 20 sprinklings per density, flat 2d Minkowski diamond:
 | 4000 | 3999   | -239.5 | 692.0    |
 | 8000 | 7989   | -193.5 | 1347.3   |
 
-mean.S is consistent with zero within statistical error at every N
+<S> is consistent with zero within statistical error at every N
 
 (standard error of the mean ~ stdev/sqrt(20)), as expected for flat spacetime. stdev(S) grows with N rather than shrinking, consistent (standard error of the mean stdev/sqrt(20)), as expected for flat spacetime. stdev(S) grows with N rather than shrinking -- consistent with Benincasa & Dowker's description of the unsmeared operator B, for which fluctuations persist (and are only tamed by the smeared operator B_k, not implemented here).
 
@@ -168,6 +168,7 @@ src/sprinkle.hpp/.cpp   - Poisson sprinkling into a causal diamond
 src/causet.hpp/.cpp     - causal matrix construction, ordering fraction, order interval calculation
 src/dimension.hpp/.cpp  - Myrheim-Meyer dimension estimator (bisection)
 src/main.cpp            - orchestration (magic happens here :) )
+src/action.hpp/.cpp	- Calculation of the BDG action
 tests/test_causet.cpp	- unit tests: hand-built 4-element causet checks, naive vs. bitset interval-count cross-validation
 ```
 
@@ -175,6 +176,7 @@ tests/test_causet.cpp	- unit tests: hand-built 4-element causet checks, naive vs
 
 - Only implements 2D yet.
 - As of yet has O(N^3) complexity (although reduced somewhat using bitset optimization).
+- Action has diverging standard deviation with N.(See Results)
 
 More to be added as I move forward.
 
